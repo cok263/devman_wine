@@ -1,9 +1,17 @@
 import datetime
 import collections
 
+import argparse
 import pandas
 from http.server import HTTPServer, SimpleHTTPRequestHandler
 from jinja2 import Environment, FileSystemLoader, select_autoescape
+
+parser = argparse.ArgumentParser(
+    description='Программа модуля "Верстка для питониста" урок 1'
+)
+parser.add_argument('--datafile', default='wine3.xlsx', help='Файл с данными по продукции')
+parser.add_argument('--sheet', default='Лист1', help='Название листа с данными')
+args = parser.parse_args()
 
 env = Environment(
     loader=FileSystemLoader('.'),
@@ -13,8 +21,8 @@ env = Environment(
 template = env.get_template('template.html')
 start_year = 1920
 products_data = pandas.read_excel(
-    'wine3.xlsx',
-    sheet_name='Лист1',
+    args.datafile,
+    sheet_name=args.sheet,
     keep_default_na=''
 )
 
