@@ -9,7 +9,7 @@ from jinja2 import Environment, FileSystemLoader, select_autoescape
 parser = argparse.ArgumentParser(
     description='Программа модуля "Верстка для питониста" урок 1'
 )
-parser.add_argument('--datafile', default='wine3.xlsx', help='Файл с данными по продукции')
+parser.add_argument('--datafile', default='wine.xlsx', help='Файл с данными по продукции')
 parser.add_argument('--sheet', default='Лист1', help='Название листа с данными')
 args = parser.parse_args()
 
